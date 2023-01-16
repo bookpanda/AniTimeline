@@ -1,5 +1,5 @@
 {
-  "name": "@org/client",
+  "name": "@anitimeline/client",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -11,17 +11,17 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.3",
-    "@org/apollo": "workspace:0.0.0",
-    "@org/design": "workspace:0.0.0",
+    "@anitimeline/apollo": "workspace:0.0.0",
+    "@anitimeline/design": "workspace:0.0.0",
     "clsx": "^1.2.1",
     "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@org/codegen": "workspace:0.0.0",
-    "@org/config": "workspace:0.0.0",
-    "@org/constants": "workspace:0.0.0",
+    "@anitimeline/codegen": "workspace:0.0.0",
+    "@anitimeline/config": "workspace:0.0.0",
+    "@anitimeline/constants": "workspace:0.0.0",
     "@types/node": "^18.11.18",
     "@types/react": "18.0.26",
     "@types/react-datepicker": "^4.8.0",

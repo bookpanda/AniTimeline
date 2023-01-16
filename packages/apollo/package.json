@@ -1,5 +1,5 @@
 {
-  "name": "@org/apollo",
+  "name": "@anitimeline/apollo",
   "version": "0.0.0",
   "private": true,
   "main": "src/index.ts",
@@ -8,8 +8,8 @@
     "format": "eslint src --fix"
   },
   "devDependencies": {
-    "@org/config": "workspace:0.0.0",
-    "@org/constants": "workspace:0.0.0"
+    "@anitimeline/config": "workspace:0.0.0",
+    "@anitimeline/constants": "workspace:0.0.0"
   },
   "dependencies": {
     "@apollo/client": "^3.7.3"

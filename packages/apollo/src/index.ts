@@ -1,6 +1,6 @@
+import { authorizationLocalStorageKey } from "@anitimeline/constants";
 import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { authorizationLocalStorageKey } from "@org/constants";
 
 export function createApolloClient(url: string) {
   const httpLink = createHttpLink({

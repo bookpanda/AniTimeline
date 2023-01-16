@@ -1,5 +1,5 @@
 {
-  "name": "@org/config",
+  "name": "@anitimeline/config",
   "version": "0.0.0",
   "private": true,
   "devDependencies": {

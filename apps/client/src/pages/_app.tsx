@@ -1,9 +1,8 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
+import { createApolloClient } from "@anitimeline/apollo";
 import { ApolloProvider } from "@apollo/client";
-
-import { createApolloClient } from "@org/apollo";
 
 import "$styles/global.scss";
 
@@ -15,9 +14,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Turbo Next Nest GraphQL Prisma</title>
+        <title>AniTimeline</title>
         <meta
-          content="My personal stack for production app"
+          content="App for viewing your anime timeline!"
           name="description"
         />
       </Head>

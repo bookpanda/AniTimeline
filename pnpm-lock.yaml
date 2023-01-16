@@ -58,12 +58,12 @@ importers:
 
   apps/client:
     specifiers:
+      '@anitimeline/apollo': workspace:0.0.0
+      '@anitimeline/codegen': workspace:0.0.0
+      '@anitimeline/config': workspace:0.0.0
+      '@anitimeline/constants': workspace:0.0.0
+      '@anitimeline/design': workspace:0.0.0
       '@apollo/client': ^3.7.3
-      '@org/apollo': workspace:0.0.0
-      '@org/codegen': workspace:0.0.0
-      '@org/config': workspace:0.0.0
-      '@org/constants': workspace:0.0.0
-      '@org/design': workspace:0.0.0
       '@types/node': ^18.11.18
       '@types/react': 18.0.26
       '@types/react-datepicker': ^4.8.0
@@ -78,17 +78,17 @@ importers:
       tailwindcss: ^3.2.4
       typescript: ^4.9.4
     dependencies:
+      '@anitimeline/apollo': link:../../packages/apollo
+      '@anitimeline/design': link:../../packages/design
       '@apollo/client': 3.7.3_gdcq4dv6opitr3wbfwyjmanyra
-      '@org/apollo': link:../../packages/apollo
-      '@org/design': link:../../packages/design
       clsx: 1.2.1
       next: 13.1.1_3duxcpitbtplz62feflag7fwby
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
-      '@org/codegen': link:../../packages/codegen
-      '@org/config': link:../../packages/config
-      '@org/constants': link:../../packages/constants
+      '@anitimeline/codegen': link:../../packages/codegen
+      '@anitimeline/config': link:../../packages/config
+      '@anitimeline/constants': link:../../packages/constants
       '@types/node': 18.11.18
       '@types/react': 18.0.26
       '@types/react-datepicker': 4.8.0_biqbaboplfbrettd7655fr4n2y
@@ -101,6 +101,8 @@ importers:
 
   apps/server:
     specifiers:
+      '@anitimeline/config': workspace:0.0.0
+      '@anitimeline/constants': workspace:0.0.0
       '@nestjs/cli': ^9.1.8
       '@nestjs/common': ^9.2.1
       '@nestjs/config': ^2.2.0
@@ -109,8 +111,6 @@ importers:
       '@nestjs/mercurius': ^10.1.7
       '@nestjs/platform-fastify': ^9.2.1
       '@nestjs/schematics': ^9.0.4
-      '@org/config': workspace:0.0.0
-      '@org/constants': workspace:0.0.0
       '@types/jsonwebtoken': ^9.0.0
       '@types/node': ^18.11.18
       class-transformer: ^0.5.1
@@ -147,10 +147,10 @@ importers:
       rxjs: 7.8.0
       tslib: 2.4.1
     devDependencies:
+      '@anitimeline/config': link:../../packages/config
+      '@anitimeline/constants': link:../../packages/constants
       '@nestjs/cli': 9.1.8
       '@nestjs/schematics': 9.0.4_typescript@4.9.4
-      '@org/config': link:../../packages/config
-      '@org/constants': link:../../packages/constants
       '@types/jsonwebtoken': 9.0.0
       '@types/node': 18.11.18
       source-map-support: 0.5.21
@@ -162,24 +162,24 @@ importers:
 
   packages/apollo:
     specifiers:
+      '@anitimeline/config': workspace:0.0.0
+      '@anitimeline/constants': workspace:0.0.0
       '@apollo/client': ^3.7.3
-      '@org/config': workspace:0.0.0
-      '@org/constants': workspace:0.0.0
     dependencies:
       '@apollo/client': 3.7.3_graphql@16.6.0
     devDependencies:
-      '@org/config': link:../config
-      '@org/constants': link:../constants
+      '@anitimeline/config': link:../config
+      '@anitimeline/constants': link:../constants
 
   packages/codegen:
     specifiers:
+      '@anitimeline/config': workspace:0.0.0
       '@apollo/client': ^3.7.3
       '@graphql-codegen/cli': ^2.16.3
       '@graphql-codegen/near-operation-file-preset': ^2.5.0
       '@graphql-codegen/typescript': ^2.8.7
       '@graphql-codegen/typescript-operations': ^2.5.12
       '@graphql-codegen/typescript-react-apollo': ^3.3.7
-      '@org/config': workspace:0.0.0
       graphql: ^16.6.0
       graphql-tag: ^2.12.6
       nodemon: ^2.0.20
@@ -188,12 +188,12 @@ importers:
       graphql: 16.6.0
       graphql-tag: 2.12.6_graphql@16.6.0
     devDependencies:
+      '@anitimeline/config': link:../config
       '@graphql-codegen/cli': 2.16.3_wl4vyuczoxcwwozwumwpxheb2e
       '@graphql-codegen/near-operation-file-preset': 2.5.0_graphql@16.6.0
       '@graphql-codegen/typescript': 2.8.7_graphql@16.6.0
       '@graphql-codegen/typescript-operations': 2.5.12_graphql@16.6.0
       '@graphql-codegen/typescript-react-apollo': 3.3.7_sy4knu3obj4ys7pjcqbyfxmqle
-      '@org/config': link:../config
       nodemon: 2.0.20
 
   packages/config:
@@ -204,13 +204,13 @@ importers:
 
   packages/constants:
     specifiers:
-      '@org/config': workspace:0.0.0
+      '@anitimeline/config': workspace:0.0.0
     devDependencies:
-      '@org/config': link:../config
+      '@anitimeline/config': link:../config
 
   packages/design:
     specifiers:
-      '@org/config': workspace:0.0.0
+      '@anitimeline/config': workspace:0.0.0
       '@types/react': ^18.0.26
       '@types/react-dom': ^18.0.10
       clsx: ^1.2.1
@@ -221,7 +221,7 @@ importers:
     dependencies:
       clsx: 1.2.1
     devDependencies:
-      '@org/config': link:../config
+      '@anitimeline/config': link:../config
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.10
       next: 13.1.1_biqbaboplfbrettd7655fr4n2y
