@@ -10,13 +10,14 @@
     "format": "eslint src --fix"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.3",
     "@anitimeline/apollo": "workspace:0.0.0",
     "@anitimeline/design": "workspace:0.0.0",
+    "@apollo/client": "^3.7.3",
     "clsx": "^1.2.1",
     "next": "13.1.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-vertical-timeline-component": "^3.6.0"
   },
   "devDependencies": {
     "@anitimeline/codegen": "workspace:0.0.0",
@@ -25,6 +26,7 @@
     "@types/node": "^18.11.18",
     "@types/react": "18.0.26",
     "@types/react-datepicker": "^4.8.0",
+    "@types/react-vertical-timeline-component": "^3.3.3",
     "autoprefixer": "^10.4.13",
     "eslint-config-next": "^13.1.1",
     "postcss": "^8.4.21",
