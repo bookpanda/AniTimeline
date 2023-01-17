@@ -61,7 +61,10 @@ export const Timeline: FC<TimelineProps> = ({ entries }) => {
           const title =
             entry.media.title.english ?? entry.media.title.userPreferred;
           const src = entry.media.coverImage.large;
-          const srcChar = entry.media.characters.nodes[0].image.medium;
+          const numChar = entry.media.characters.nodes.length;
+          const srcChar =
+            entry.media.characters.nodes[Math.floor(Math.random() * numChar)]
+              .image.medium;
           const startedAt = new Date(
             entry.startedAt.year,
             entry.startedAt.month,
