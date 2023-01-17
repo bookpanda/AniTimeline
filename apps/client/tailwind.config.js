@@ -17,6 +17,9 @@ const config = {
         "blue-light": "#6ac0ee",
         "blue-dark": "#4190d2",
       },
+      minHeight: {
+        screen: "100vh",
+      },
     },
   },
   darkMode: "class",

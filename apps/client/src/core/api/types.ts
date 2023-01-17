@@ -17,6 +17,9 @@ export interface IData {
                 day: number;
               };
               media: {
+                characters: {
+                  nodes: [{ image: { medium: string } }];
+                };
                 title: {
                   romaji: string;
                   english: string;
@@ -54,6 +57,9 @@ export interface ICompleted {
         day: number;
       };
       media: {
+        characters: {
+          nodes: [{ image: { medium: string } }];
+        };
         title: {
           romaji: string;
           english: string;

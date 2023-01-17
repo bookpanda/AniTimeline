@@ -15,6 +15,9 @@ export const initState: ICompleted = {
         day: 0,
       },
       media: {
+        characters: {
+          nodes: [{ image: { medium: "" } }],
+        },
         title: {
           romaji: "",
           english: "",

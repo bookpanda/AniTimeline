@@ -19,7 +19,7 @@ const IndexPage: MyPage = () => {
     console.log(data);
   };
   return (
-    <main className="h-screen w-screen bg-white-pink">
+    <main className="min-h-screen w-screen bg-white-pink">
       <NavBar />
       <div className="flex w-screen flex-col items-center">
         <div className="mt-20 flex w-2/5 flex-col items-center justify-center rounded-2xl bg-white p-4">
@@ -34,9 +34,11 @@ const IndexPage: MyPage = () => {
             <Button onClick={() => enterData()}>Enter</Button>
           </div>
         </div>
-        <div className="bg-white">
-          <Timeline entries={data.entries} />
-        </div>
+        {data !== initState && (
+          <div className="w-2/5">
+            <Timeline entries={data.entries} />
+          </div>
+        )}
       </div>
     </main>
   );

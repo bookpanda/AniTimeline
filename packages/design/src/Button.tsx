@@ -10,7 +10,7 @@ export const Button: FC<ButtonProps> = memo(({ children, onClick }) => {
   return (
     <button
       className={clsx(
-        "rounded-lg bg-blue-600 p-4 text-xl font-bold text-white transition-colors hover:bg-blue-500"
+        "bg-blue-light hover:bg-blue-dark h-12 rounded-lg px-4 text-lg font-bold text-black transition-colors hover:text-white"
       )}
       onClick={onClick}
     >
@@ -18,5 +18,3 @@ export const Button: FC<ButtonProps> = memo(({ children, onClick }) => {
     </button>
   );
 });
-
-Button.displayName = "Button";

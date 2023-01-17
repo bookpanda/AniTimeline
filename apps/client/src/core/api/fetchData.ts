@@ -18,6 +18,13 @@ export async function fetchData(username: string) {
             day
           }
           media { 
+            characters {
+              nodes {
+                image {
+                  medium
+              	}
+              }
+            }
             title {
               romaji
               english

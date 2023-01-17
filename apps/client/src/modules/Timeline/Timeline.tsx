@@ -7,6 +7,8 @@ import "react-vertical-timeline-component/style.min.css";
 
 import Image from "next/image";
 
+import clsx from "clsx";
+
 type TimelineProps = {
   entries: [
     {
@@ -21,6 +23,9 @@ type TimelineProps = {
         day: number;
       };
       media: {
+        characters: {
+          nodes: [{ image: { medium: string } }];
+        };
         title: {
           romaji: string;
           english: string;
@@ -47,12 +52,16 @@ export const Timeline: FC<TimelineProps> = ({ entries }) => {
   };
 
   return (
-    <>
-      <VerticalTimeline>
-        {entries.map((entry) => {
+    <div>
+      <VerticalTimeline layout="1-column-left">
+        {entries.map((entry, index) => {
+          const bgColor = index % 2 === 0 ? "#6ac0ee" : "#f4d64f";
+          const textColor = index % 2 === 0 ? "#ffffff" : "#000000";
           const id = entry.media.id;
-          const title = entry.media.title.english;
+          const title =
+            entry.media.title.english ?? entry.media.title.userPreferred;
           const src = entry.media.coverImage.large;
+          const srcChar = entry.media.characters.nodes[0].image.medium;
           const startedAt = new Date(
             entry.startedAt.year,
             entry.startedAt.month,
@@ -68,33 +77,50 @@ export const Timeline: FC<TimelineProps> = ({ entries }) => {
               key={id}
               className="vertical-timeline-element--work"
               contentArrowStyle={{
-                borderRight: "7px solid  rgb(33, 150, 243)",
+                borderRight: clsx("7px solid", bgColor),
               }}
-              contentStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-              date={startedAt.toDateString()}
+              contentStyle={{
+                padding: "16px",
+                background: bgColor,
+                color: textColor,
+                borderRadius: "16px",
+              }}
               icon={
+                <div className="h-10 w-10 overflow-clip rounded-full">
+                  <Image
+                    alt={title}
+                    className=""
+                    height={40}
+                    loader={() => srcChar}
+                    src={srcChar}
+                    width={40}
+                  />
+                </div>
+              }
+              iconStyle={{ background: "#fff", color: "#fff" }}
+            >
+              <div className="flex space-x-4">
                 <Image
                   alt={title}
-                  height={50}
+                  className="rounded-xl"
+                  height={120}
                   loader={() => src}
                   src={src}
-                  width={50}
+                  width={120}
                 />
-              }
-              iconStyle={{ background: "#6ac0ee", color: "#fff" }}
-            >
-              <h3 className="vertical-timeline-element-title">{title}</h3>
-              <h4 className="vertical-timeline-element-subtitle">
-                Watch Time: {dateDiff(startedAt, completedAt) + 1} days
-              </h4>
-              <p>
-                Creative Direction, User Experience, Visual Design, Project
-                Management, Team Leading
-              </p>
+                <div>
+                  <h3 className="vertical-timeline-element-title text-xl font-bold">
+                    {title}
+                  </h3>
+                  <h4>Started Watching: {startedAt.toDateString()}</h4>
+                  <h4>Completed Watching: {completedAt.toDateString()}</h4>
+                  <h4>Total Days: {dateDiff(startedAt, completedAt) + 1}</h4>
+                </div>
+              </div>
             </VerticalTimelineElement>
           );
         })}
       </VerticalTimeline>
-    </>
+    </div>
   );
 };
