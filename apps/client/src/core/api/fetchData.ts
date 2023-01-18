@@ -82,14 +82,14 @@ export async function fetchData(username: string, sort = "STARTED_ON") {
       })
       .indexOf("Completed");
     const completed: ICompleted = dataLists[elementPos];
-    console.log(elementPos, dataLists);
-    console.log(`user ${username} success : `, completed);
+    // console.log(elementPos, dataLists);
+    // console.log(`user ${username} success : `, completed);
 
     return completed;
   }
 
   async function handleError(error: Promise<object>) {
-    console.error(`user ${username} : `, error);
+    // console.error(`user ${username} : `, error);
     return await initState;
   }
 }

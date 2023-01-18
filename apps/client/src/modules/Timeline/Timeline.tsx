@@ -9,41 +9,12 @@ import Image from "next/image";
 
 import clsx from "clsx";
 
-type TimelineProps = {
-  entries: {
-    startedAt: {
-      year: number;
-      month: number;
-      day: number;
-    };
-    completedAt: {
-      year: number;
-      month: number;
-      day: number;
-    };
-    score: number;
-    media: {
-      characters: {
-        nodes: { image: { medium: string } }[];
-      };
-      title: {
-        romaji: string;
-        english: string;
-        native: string;
-        userPreferred: string;
-      };
-      id: number;
-      coverImage: {
-        extraLarge: string;
-        large: string;
-        medium: string;
-        color: string;
-      };
-    };
-  }[];
-};
+import { useDataContext } from "$core/contexts";
 
-export const Timeline: FC<TimelineProps> = ({ entries }) => {
+export const Timeline: FC = () => {
+  const dataContext = useDataContext();
+  const { data } = dataContext;
+  const entries = data.entries;
   const dateDiff = (first: Date, second: Date) => {
     return Math.round(
       (second.getTime() - first.getTime()) / (1000 * 60 * 60 * 24)

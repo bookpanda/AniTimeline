@@ -4,6 +4,8 @@ import Head from "next/head";
 import { createApolloClient } from "@anitimeline/apollo";
 import { ApolloProvider } from "@apollo/client";
 
+import { AppProvider } from "$core/contexts/app/appProvider";
+import { DataProvider } from "$core/contexts/data/dataProvider";
 import "$styles/global.scss";
 
 const client = createApolloClient(
@@ -22,7 +24,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
 
       <ApolloProvider client={client}>
-        <Component {...pageProps} />
+        <AppProvider>
+          <DataProvider>
+            <Component {...pageProps} />
+          </DataProvider>
+        </AppProvider>
       </ApolloProvider>
     </>
   );
