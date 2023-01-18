@@ -1,39 +1,39 @@
-import { useState } from "react";
-
-import { Button, InputText } from "@anitimeline/design";
+import { useEffect, useState } from "react";
 
 import { MyPage } from "$core/@types";
 import { fetchData } from "$core/api/fetchData";
 import { initState } from "$core/api/initState";
 import { ICompleted } from "$core/api/types";
-import { NavBar, Timeline } from "$modules/index";
+import { InputModule, NavBar, Timeline } from "$modules/index";
 
 const IndexPage: MyPage = () => {
   const [username, setUsername] = useState("");
+  const [sort, setSort] = useState("STARTED_ON");
   const [data, setData] = useState<ICompleted>(initState);
+  useEffect(() => {
+    fetchData(username, sort).then((data) => setData(data));
+  }, [sort, username]);
   const updateUsername = (newUsername: string) => {
     setUsername(newUsername);
   };
+  const updateSort = (newSort: string) => {
+    setSort(newSort);
+  };
   const enterData = () => {
-    fetchData(username).then((data) => setData(data));
+    fetchData(username, sort).then((data) => setData(data));
     console.log(data);
   };
   return (
     <main className="min-h-screen w-screen bg-white-pink">
       <NavBar />
       <div className="flex w-screen flex-col items-center">
-        <div className="mt-20 flex w-full flex-col items-center justify-center rounded-2xl bg-white p-4 lg:w-2/5">
-          <h3 className="text-xl font-bold">Enter your AniList username</h3>
-          <div className="flex items-center space-x-4">
-            <InputText
-              handleChange={(e) => updateUsername(e.target.value)}
-              name="username"
-              type="text"
-              value={username}
-            />
-            <Button onClick={() => enterData()}>Enter</Button>
-          </div>
-        </div>
+        <InputModule
+          handleEnterData={enterData}
+          handleUpdateSort={updateSort}
+          handleUpdateUsername={updateUsername}
+          sort={sort}
+          username={username}
+        />
         {data !== initState && (
           <div className="w-full lg:w-2/5">
             <Timeline entries={data.entries} />

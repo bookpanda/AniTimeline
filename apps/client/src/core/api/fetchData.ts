@@ -1,13 +1,9 @@
 import { initState } from "./initState";
 import { ICompleted, IData } from "./types";
 
-enum SortType {
-  STARTED_ON,
-}
-
-export async function fetchData(username: string, sort = SortType.STARTED_ON) {
+export async function fetchData(username: string, sort = "STARTED_ON") {
   const query = `query($username: String) {
-    MediaListCollection(userName: $username, type: ANIME, sort: STARTED_ON) {
+    MediaListCollection(userName: $username, type: ANIME, sort: ${sort}) {
       lists {
         name 
         entries {
@@ -49,7 +45,7 @@ export async function fetchData(username: string, sort = SortType.STARTED_ON) {
     }
   }`;
 
-  const variables = { username, sort: sort };
+  const variables = { username, sort };
 
   const url = "https://graphql.anilist.co",
     options = {
@@ -79,14 +75,21 @@ export async function fetchData(username: string, sort = SortType.STARTED_ON) {
 
   function handleData(data: IData) {
     const dataLists = data.data.MediaListCollection.lists;
-    console.log(dataLists);
 
-    const completed: ICompleted = dataLists[1];
+    const elementPos = dataLists
+      .map(function (x) {
+        return x.name;
+      })
+      .indexOf("Completed");
+    const completed: ICompleted = dataLists[elementPos];
+    console.log(elementPos, dataLists);
+    console.log(`user ${username} success : `, completed);
+
     return completed;
   }
 
   async function handleError(error: Promise<object>) {
-    console.error(error);
+    console.error(`user ${username} : `, error);
     return await initState;
   }
 }
