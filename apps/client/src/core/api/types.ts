@@ -16,6 +16,7 @@ export interface IData {
                 month: number;
                 day: number;
               };
+              score: number;
               media: {
                 characters: {
                   nodes: [{ image: { medium: string } }];
@@ -56,6 +57,7 @@ export interface ICompleted {
         month: number;
         day: number;
       };
+      score: number;
       media: {
         characters: {
           nodes: [{ image: { medium: string } }];

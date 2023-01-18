@@ -22,6 +22,7 @@ type TimelineProps = {
         month: number;
         day: number;
       };
+      score: number;
       media: {
         characters: {
           nodes: [{ image: { medium: string } }];
@@ -65,6 +66,7 @@ export const Timeline: FC<TimelineProps> = ({ entries }) => {
           const srcChar =
             entry.media.characters.nodes[Math.floor(Math.random() * numChar)]
               .image.medium;
+          const score = entry.score;
           const startedAt = new Date(
             entry.startedAt.year,
             entry.startedAt.month,
@@ -102,19 +104,28 @@ export const Timeline: FC<TimelineProps> = ({ entries }) => {
               }
               iconStyle={{ background: "#fff", color: "#fff" }}
             >
-              <div className="flex space-x-4">
+              <div className="flex flex-col space-x-4 md:flex-row">
                 <Image
                   alt={title}
-                  className="rounded-xl"
+                  className="hidden rounded-xl lg:block"
                   height={120}
                   loader={() => src}
                   src={src}
                   width={120}
                 />
-                <div>
+                <Image
+                  alt={title}
+                  className="flex-none rounded-xl lg:hidden"
+                  height={120}
+                  loader={() => src}
+                  src={src}
+                  width={120}
+                />
+                <div className="mt-4 md:mt-0">
                   <h3 className="vertical-timeline-element-title text-xl font-bold">
                     {title}
                   </h3>
+                  <h3 className="mb-4 text-xl">Score: {score}</h3>
                   <h4>Started Watching: {startedAt.toDateString()}</h4>
                   <h4>Completed Watching: {completedAt.toDateString()}</h4>
                   <h4>Total Days: {dateDiff(startedAt, completedAt) + 1}</h4>

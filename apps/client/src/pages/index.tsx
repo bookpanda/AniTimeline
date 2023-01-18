@@ -22,7 +22,7 @@ const IndexPage: MyPage = () => {
     <main className="min-h-screen w-screen bg-white-pink">
       <NavBar />
       <div className="flex w-screen flex-col items-center">
-        <div className="mt-20 flex w-2/5 flex-col items-center justify-center rounded-2xl bg-white p-4">
+        <div className="mt-20 flex w-full flex-col items-center justify-center rounded-2xl bg-white p-4 lg:w-2/5">
           <h3 className="text-xl font-bold">Enter your AniList username</h3>
           <div className="flex items-center space-x-4">
             <InputText
@@ -35,7 +35,7 @@ const IndexPage: MyPage = () => {
           </div>
         </div>
         {data !== initState && (
-          <div className="w-2/5">
+          <div className="w-full lg:w-2/5">
             <Timeline entries={data.entries} />
           </div>
         )}

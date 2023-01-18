@@ -14,6 +14,7 @@ export const initState: ICompleted = {
         month: 0,
         day: 0,
       },
+      score: 0,
       media: {
         characters: {
           nodes: [{ image: { medium: "" } }],

@@ -17,6 +17,7 @@ export async function fetchData(username: string) {
             month
             day
           }
+          score
           media { 
             characters {
               nodes {
