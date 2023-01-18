@@ -13,12 +13,16 @@ export const DataProvider: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     if (username !== "") {
       enterData(username, sort);
+    } else {
+      setData(initState);
     }
   }, [sort]);
   const enterData = (username: string, sort: string) => {
     if (username !== "") {
       fetchData(username, sort).then((data) => setData(data));
       console.log(data);
+    } else {
+      setData(initState);
     }
   };
   return (

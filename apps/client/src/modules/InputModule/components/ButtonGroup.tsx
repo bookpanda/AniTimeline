@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 
-import { useAppContext, useDataContext } from "$core/contexts";
+import { useAppContext } from "$core/contexts";
 
 import { ButtonMember } from "./ButtonMember";
 
@@ -33,9 +33,7 @@ export const ButtonGroup: FC = () => {
   ];
   const [buttonState, setButtonState] = useState(initState);
   const AppContext = useAppContext();
-  const { username } = AppContext;
-  const dataContext = useDataContext();
-  const { enterData } = dataContext;
+  const { setSort } = AppContext;
   const click = (index: number) => {
     setButtonState((oldState) => {
       const newState = oldState;
@@ -50,7 +48,7 @@ export const ButtonGroup: FC = () => {
       }
       return newState;
     });
-    enterData(username, buttonState[index].sort);
+    setSort(buttonState[index].sort);
   };
 
   return (

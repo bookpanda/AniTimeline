@@ -9,7 +9,7 @@ import { ButtonGroup } from "./components/ButtonGroup";
 export const InputModule: FC = () => {
   const appContext = useAppContext();
   const dataContext = useDataContext();
-  const { setSort, setUsername, sort, username } = appContext;
+  const { setUsername, sort, username } = appContext;
   const { enterData } = dataContext;
   return (
     <div className="mt-20 flex w-full flex-col items-center justify-center rounded-2xl bg-white p-4 shadow-xl lg:w-2/5">
@@ -23,9 +23,11 @@ export const InputModule: FC = () => {
         />
         <Button onClick={() => enterData(username, sort)}>Enter</Button>
       </div>
-      <div className="mt-4">
-        <ButtonGroup />
-      </div>
+      {username && (
+        <div className="mt-4 flex space-x-4">
+          <ButtonGroup />
+        </div>
+      )}
     </div>
   );
 };
