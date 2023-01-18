@@ -1,26 +1,70 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
+
+import { useAppContext, useDataContext } from "$core/contexts";
+
+import { ButtonMember } from "./ButtonMember";
 
 export const ButtonGroup: FC = () => {
+  const initState = [
+    {
+      style: "rounded-l-lg",
+      text: "Score",
+      sort: "SCORE",
+      active: true,
+    },
+    {
+      style: "",
+      text: "Started",
+      sort: "STARTED_ON",
+      active: false,
+    },
+    {
+      style: "",
+      text: "Completed",
+      sort: "FINISHED_ON",
+      active: false,
+    },
+    {
+      style: "rounded-r-lg",
+      text: "Days",
+      sort: "STARTED_ON",
+      active: false,
+    },
+  ];
+  const [buttonState, setButtonState] = useState(initState);
+  const AppContext = useAppContext();
+  const { username } = AppContext;
+  const dataContext = useDataContext();
+  const { enterData } = dataContext;
+  const click = (index: number) => {
+    setButtonState((oldState) => {
+      const newState = oldState;
+      newState[index] = {
+        ...newState[index],
+        active: true,
+      };
+      for (let i = 0; i < 4; i++) {
+        if (i !== index) {
+          newState[i].active = false;
+        }
+      }
+      return newState;
+    });
+    enterData(username, buttonState[index].sort);
+  };
+
   return (
-    <div className="inline-flex rounded-md shadow-md" role="group">
-      <button
-        className="rounded-l-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:text-blue-700 focus:ring-2 focus:ring-blue-700 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-blue-500"
-        type="button"
-      >
-        Profile
-      </button>
-      <button
-        className="border-t border-b border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:text-blue-700 focus:ring-2 focus:ring-blue-700 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-blue-500"
-        type="button"
-      >
-        Settings
-      </button>
-      <button
-        className="rounded-r-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:text-blue-700 focus:ring-2 focus:ring-blue-700 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-blue-500"
-        type="button"
-      >
-        Messages
-      </button>
+    <div className="inline-flex rounded-md" role="group">
+      {buttonState.map((button, index) => (
+        <ButtonMember
+          key={index}
+          active={button.active}
+          handleClick={() => click(index)}
+          index={index}
+          style={button.style}
+          text={button.text}
+        />
+      ))}
     </div>
   );
 };

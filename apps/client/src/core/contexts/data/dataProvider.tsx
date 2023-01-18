@@ -16,8 +16,10 @@ export const DataProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   }, [sort]);
   const enterData = (username: string, sort: string) => {
-    fetchData(username, sort).then((data) => setData(data));
-    console.log(data);
+    if (username !== "") {
+      fetchData(username, sort).then((data) => setData(data));
+      console.log(data);
+    }
   };
   return (
     <DataContext.Provider value={{ data, enterData }}>

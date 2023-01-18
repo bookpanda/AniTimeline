@@ -23,13 +23,9 @@ export const InputModule: FC = () => {
         />
         <Button onClick={() => enterData(username, sort)}>Enter</Button>
       </div>
-      <InputText
-        handleChange={(e) => setSort(e.target.value)}
-        name="sort"
-        type="text"
-        value={sort}
-      />
-      <ButtonGroup />
+      <div className="mt-4">
+        <ButtonGroup />
+      </div>
     </div>
   );
 };

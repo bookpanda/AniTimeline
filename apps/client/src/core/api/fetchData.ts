@@ -1,7 +1,7 @@
 import { initState } from "./initState";
 import { ICompleted, IData } from "./types";
 
-export async function fetchData(username: string, sort = "STARTED_ON") {
+export async function fetchData(username = "", sort = "STARTED_ON") {
   const query = `query($username: String) {
     MediaListCollection(userName: $username, type: ANIME, sort: ${sort}) {
       lists {
