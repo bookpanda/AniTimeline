@@ -10,6 +10,7 @@ export const DataProvider: FC<PropsWithChildren> = ({ children }) => {
   const appContext = useAppContext();
   const { sort, username } = appContext;
   const [data, setData] = useState(initState);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (username !== "") {
       enterData(username, sort);
@@ -18,15 +19,14 @@ export const DataProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   }, [sort]);
   const enterData = (username: string, sort: string) => {
-    if (username !== "") {
-      fetchData(username, sort).then((data) => setData(data));
-      console.log(data);
-    } else {
-      setData(initState);
-    }
+    setLoading(true);
+    fetchData(username, sort).then((data) => {
+      setLoading(false);
+      setData(data);
+    });
   };
   return (
-    <DataContext.Provider value={{ data, enterData }}>
+    <DataContext.Provider value={{ data, enterData, loading, setLoading }}>
       {children}
     </DataContext.Provider>
   );
