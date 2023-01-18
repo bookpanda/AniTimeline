@@ -1,7 +1,7 @@
 import { initState } from "./initState";
 import { ICompleted, IData } from "./types";
 
-export async function fetchData(username = "", sort = "STARTED_ON") {
+export async function fetchData(username = "", sort = "SCORE_DESC") {
   const query = `query($username: String) {
     MediaListCollection(userName: $username, type: ANIME, sort: ${sort}) {
       lists {
@@ -60,12 +60,10 @@ export async function fetchData(username = "", sort = "STARTED_ON") {
       }),
     };
 
-  // Make the HTTP Api request
   return await fetch(url, options)
     .then(handleResponse)
     .then(handleData)
     .catch(handleError);
-  // .then((response) => response.json());
 
   function handleResponse(response: Response) {
     return response.json().then(function (json) {
@@ -82,14 +80,10 @@ export async function fetchData(username = "", sort = "STARTED_ON") {
       })
       .indexOf("Completed");
     const completed: ICompleted = dataLists[elementPos];
-    // console.log(elementPos, dataLists);
-    // console.log(`user ${username} success : `, completed);
-
     return completed;
   }
 
-  async function handleError(error: Promise<object>) {
-    // console.error(`user ${username} : `, error);
+  async function handleError() {
     return await initState;
   }
 }

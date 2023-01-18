@@ -24,7 +24,7 @@ export const InputModule: FC = () => {
         <Button onClick={() => enterData(username, sort)}>Enter</Button>
       </div>
       {username && (
-        <div className="mt-4 flex space-x-4">
+        <div className="mt-4">
           <ButtonGroup />
         </div>
       )}
