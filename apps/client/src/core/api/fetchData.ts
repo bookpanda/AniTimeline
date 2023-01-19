@@ -73,7 +73,6 @@ export async function fetchData(username = "", sort = "SCORE_DESC") {
 
   function handleData(data: IData) {
     const dataLists = data.data.MediaListCollection.lists;
-
     const elementPos = dataLists
       .map(function (x) {
         return x.name;
