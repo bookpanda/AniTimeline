@@ -14,7 +14,7 @@ import { useDataContext } from "$core/contexts";
 export const Timeline: FC = () => {
   const dataContext = useDataContext();
   const { data } = dataContext;
-  console.log(data);
+  console.log(`timeline: ${data}`);
 
   const entries = data?.entries;
   const dateDiff = (first: Date, second: Date) => {
