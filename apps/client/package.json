@@ -13,7 +13,9 @@
     "@anitimeline/apollo": "workspace:0.0.0",
     "@anitimeline/design": "workspace:0.0.0",
     "@apollo/client": "^3.7.3",
+    "@graphql-typed-document-node/core": "^3.1.1",
     "clsx": "^1.2.1",
+    "graphql": "^16.6.0",
     "next": "13.1.1",
     "react": "18.2.0",
     "react-bootstrap-icons": "^1.10.2",
@@ -24,6 +26,8 @@
     "@anitimeline/codegen": "workspace:0.0.0",
     "@anitimeline/config": "workspace:0.0.0",
     "@anitimeline/constants": "workspace:0.0.0",
+    "@graphql-codegen/cli": "^2.16.3",
+    "@graphql-codegen/client-preset": "^2.0.0",
     "@types/node": "^18.11.18",
     "@types/react": "18.0.26",
     "@types/react-datepicker": "^4.8.0",
@@ -33,6 +37,7 @@
     "postcss": "^8.4.21",
     "sass": "^1.57.1",
     "tailwindcss": "^3.2.4",
+    "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
   }
 }
