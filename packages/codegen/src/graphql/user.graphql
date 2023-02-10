@@ -1,12 +1,48 @@
-query users {
-  users {
-    id
-    username
-    createdAt
-    updatedAt
+query GetAnimeFromUser ($username: String) {
+    MediaListCollection(userName: $username, type: ANIME, sort: SCORE) {
+      lists {
+        name 
+        entries {
+          startedAt {
+            year
+            month
+            day
+          }
+          completedAt {
+            year
+            month
+            day
+          }
+          score
+          media { 
+            characters {
+              nodes {
+                image {
+                  medium
+              	}
+              }
+            }
+            title {
+              romaji
+              english
+              native
+              userPreferred
+            }
+            id
+            coverImage {
+              extraLarge
+              large
+              medium
+              color
+            }
+          }
+        }
+      }
+    }
   }
-}
 
-query userCount {
-  userCount
+query Test {
+  Media(id: 1) {
+    id
+  }
 }
