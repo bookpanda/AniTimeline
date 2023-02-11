@@ -1,15 +1,20 @@
 import Image from "next/image";
 
+import { useGetAnimeFromUserQuery } from "@anitimeline/codegen/src";
+
 import { MyPage } from "$core/@types";
-import { initState } from "$core/api/initState";
-import { useDataContext } from "$core/contexts";
+import { useAppContext } from "$core/contexts";
 import { InputModule, NavBar, NotFound, Timeline } from "$modules/index";
 
-import { bocchiLoading, bocchiNo } from "../../public";
+import { bocchiLoading } from "../../public";
 
 const IndexPage: MyPage = () => {
-  const dataContext = useDataContext();
-  const { data, loading } = dataContext;
+  const appContext = useAppContext();
+  const { sort, username } = appContext;
+  const { data, loading } = useGetAnimeFromUserQuery({
+    variables: { username },
+  });
+
   return (
     <main className="min-h-screen w-screen bg-white-pink">
       <NavBar />
@@ -34,7 +39,7 @@ const IndexPage: MyPage = () => {
             <h3 className="mt-4 text-center text-2xl font-bold">Loading...</h3>
           </div>
         )}
-        {data !== initState && loading === false ? (
+        {data && loading === false ? (
           <div className="w-full lg:w-2/5">
             <Timeline />
           </div>

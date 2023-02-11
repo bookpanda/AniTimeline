@@ -40,9 +40,3 @@ query GetAnimeFromUser ($username: String) {
       }
     }
   }
-
-query Test {
-  Media(id: 1) {
-    id
-  }
-}
