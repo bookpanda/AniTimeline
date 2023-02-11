@@ -1,14 +1,16 @@
 import { FC, PropsWithChildren, useState } from "react";
 
-import { useGetAnimeFromUserQuery } from "@anitimeline/codegen";
+import { MediaListSort, useGetAnimeFromUserQuery } from "@anitimeline/codegen";
 
 import { AppContext } from "./appContext";
 
 export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
   const [username, setUsername] = useState("bookpanda");
   const [sort, setSort] = useState("SCORE_DESC");
-  const [loading, setLoading] = useState(false);
-  const data = useGetAnimeFromUserQuery({ variables: { username } });
+  // const [loading, setLoading] = useState(true);
+  const data = useGetAnimeFromUserQuery({
+    variables: { username, sort: sort as MediaListSort },
+  });
   return (
     <AppContext.Provider
       value={{
@@ -16,8 +18,8 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
         sort,
         setUsername,
         setSort,
-        loading,
-        setLoading,
+        // loading,
+        // setLoading,
         data,
       }}
     >

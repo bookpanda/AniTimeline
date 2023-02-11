@@ -5,6 +5,7 @@ import * as Apollo from '@apollo/client';
 const defaultOptions = {} as const;
 export type GetAnimeFromUserQueryVariables = Types.Exact<{
   username?: Types.InputMaybe<Types.Scalars['String']>;
+  sort?: Types.InputMaybe<Array<Types.InputMaybe<Types.MediaListSort>> | Types.InputMaybe<Types.MediaListSort>>;
 }>;
 
 
@@ -12,8 +13,8 @@ export type GetAnimeFromUserQuery = { __typename?: 'Query', MediaListCollection?
 
 
 export const GetAnimeFromUserDocument = gql`
-    query GetAnimeFromUser($username: String) {
-  MediaListCollection(userName: $username, type: ANIME, sort: SCORE) {
+    query GetAnimeFromUser($username: String, $sort: [MediaListSort]) {
+  MediaListCollection(userName: $username, type: ANIME, sort: $sort) {
     lists {
       name
       entries {
@@ -69,6 +70,7 @@ export const GetAnimeFromUserDocument = gql`
  * const { data, loading, error } = useGetAnimeFromUserQuery({
  *   variables: {
  *      username: // value for 'username'
+ *      sort: // value for 'sort'
  *   },
  * });
  */
