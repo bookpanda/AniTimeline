@@ -5,7 +5,6 @@ import { createApolloClient } from "@anitimeline/apollo";
 import { ApolloProvider } from "@apollo/client";
 
 import { AppProvider } from "$core/contexts/app/appProvider";
-import { DataProvider } from "$core/contexts/data/dataProvider";
 import "$styles/global.scss";
 
 const client = createApolloClient(
@@ -25,9 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       <ApolloProvider client={client}>
         <AppProvider>
-          <DataProvider>
-            <Component {...pageProps} />
-          </DataProvider>
+          <Component {...pageProps} />
         </AppProvider>
       </ApolloProvider>
     </>

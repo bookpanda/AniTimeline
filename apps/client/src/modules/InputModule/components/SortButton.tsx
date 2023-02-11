@@ -15,7 +15,7 @@ export const SortButton: FC<ButtonMemberType> = ({
   return (
     <button
       className={clsx(
-        "rounded-lg border border-gray-200 bg-white bg-white px-4 py-2 text-sm font-medium text-gray-900 shadow-md hover:bg-gray-100 hover:text-blue-700"
+        "rounded-lg border border-gray-200  bg-white px-4 py-2 text-sm font-medium text-gray-900 shadow-md hover:bg-gray-100 hover:text-blue-700"
       )}
       type="button"
       onClick={() => handleClick()}

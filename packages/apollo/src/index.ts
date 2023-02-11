@@ -12,8 +12,10 @@ export function createApolloClient(url: string) {
 
     return {
       headers: {
-        ...headers,
-        authorization: token ?? "",
+        // ...headers,
+        // authorization: token ?? "",
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
     };
   });
